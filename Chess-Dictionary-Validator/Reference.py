@@ -1,4 +1,5 @@
 # From https://stackoverflow.com/a/60029522
+
 board = {'1a': 'bking', '2a': 'bqueen', '3a': 'brook', '4a': 'brook',
          '5a': 'bknight', '6a': 'bknight', '7a': 'bbishop', '8a': 'bbishop',
          '1b': 'bpawn', '2b': 'bpawn', '3b': 'bpawn', '4b': 'bpawn',
@@ -11,6 +12,8 @@ board = {'1a': 'bking', '2a': 'bqueen', '3a': 'brook', '4a': 'brook',
          '1g': '', '2g': '', '3g': '', '4g': '', '5g': '', '6g': '', '7g': '', '8g': '',
          '1h': '', '2h': '', '3h': '', '4h': '', '5h': '', '6h': '', '7h': '', '8e': '', }
 
+chessBoard = {'1h': 'bking', '8c': 'wqueen', '8g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+
 
 def isValidChessBoard(board):
     """Validate counts and location of pieces on board"""
@@ -18,7 +21,7 @@ def isValidChessBoard(board):
     # Define pieces and colors
     pieces = ['king', 'queen', 'rook', 'knight', 'bishop', 'pawn']
     colors = ['b', 'w']
-    # Set of all chess pieces
+    # Set of all chess pieces (It's string)
     all_pieces = set(color + piece for piece in pieces for color in colors)
 
     # Define valid range for count of chess pieces by type (low, high) tuples
@@ -52,17 +55,17 @@ def isValidChessBoard(board):
         row = int(location[:1])
         column = location[1:]
         if not ((1 <= row <= 8) and ('a' <= column <= "h")):
-            print(f"Invaid to have {board[location]} at postion {location}")
+            print(f"Invaid to have {board[location]} at position {location}")
             return False
 
     # Check if all pieces have valid names
     for loc, piece in board.items():
         if piece:
             if not piece in all_pieces:
-                print(f"{piece} is not a valid chess piece at postion {loc}")
+                print(f"{piece} is not a valid chess piece at position {loc}")
                 return False
 
     return True
 
 
-print(isValidChessBoard(board))
+print(isValidChessBoard(chessBoard))
