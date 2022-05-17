@@ -16,7 +16,7 @@ def display_inventory(inventory):
 def add_to_inventory(inventory, addedItems):
     for i in addedItems:
         inventory.setdefault(i, 0)
-        inventory[i] += 1
+        inventory[i] += 1  # what inventory[i] returned is i.values(). i is keys.
     return inventory
 
 
