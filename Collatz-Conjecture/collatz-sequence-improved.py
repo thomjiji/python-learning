@@ -8,8 +8,8 @@ try:
 
 
     inputNum = int(input("Please enter a number: "))
-    iteration: int = 0
-    newline: int = 1
+    iteration = 0
+    newline = 1
 
     while inputNum != 1:
         inputNum = collatz(inputNum)

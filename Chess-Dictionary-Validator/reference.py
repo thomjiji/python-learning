@@ -55,7 +55,7 @@ def isValidChessBoard(board):
         row = int(location[:1])
         column = location[1:]
         if not ((1 <= row <= 8) and ('a' <= column <= "h")):
-            print(f"Invaid to have {board[location]} at position {location}")
+            print(f"Invalid to have {board[location]} at position {location}")
             return False
 
     # Check if all pieces have valid names
