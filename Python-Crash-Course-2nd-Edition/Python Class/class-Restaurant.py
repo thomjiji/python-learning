@@ -17,6 +17,17 @@ class Restaurant:
         self.number_served += people
 
 
+class IceCreamStand(Restaurant):
+    def __init__(self, name, type):
+        super().__init__(name, type)
+        self.flavors = ['Apple', 'Bacon', 'Beer', 'Blue moon']
+
+    def display_flavors(self):
+        print(f"{self.restaurant_name} has these flavors of ice cream: ")
+        for item in self.flavors:
+            print('-', item)
+
+
 class User:
     def __init__(self, fname, lname, age, location):
         self.first_name = fname
@@ -36,6 +47,24 @@ class User:
 
     def reset_login_attempts(self):
         self.login_attempt = 0
+
+
+class Admin(User):
+    def __init__(self, fname, lname, age, location):
+        super().__init__(fname, lname, age, location)
+        self.privileges = Privileges()
+
+
+class Privileges:
+    def __init__(self):
+        self.privileges = ['can add post', 'can delete post', 'can ban user']
+
+    def show_privileges(self):
+        print(f"Administrator's privileges contains: ")
+        for i in self.privileges:
+            num = self.privileges.index(i) + 1
+            print(num, '. ', i, sep='')
+            num += 1
 
 
 # # 9-1
@@ -68,14 +97,22 @@ class User:
 # restaurant3.increment_number_served(10)
 # print(restaurant3.number_served)
 
-# 9.5. Login Attempts
-user_2 = User('huang', 'erzhi', 24, 'Beijing')
-user_2.describe_user()
+# # 9.5. Login Attempts
+# user_2 = User('huang', 'erzhi', 24, 'Beijing')
+# user_2.describe_user()
+#
+# user_2.increment_login_attempts()
+# user_2.increment_login_attempts()
+# user_2.increment_login_attempts()
+# print(user_2.login_attempt)
+#
+# user_2.reset_login_attempts()
+# print(user_2.login_attempt)
 
-user_2.increment_login_attempts()
-user_2.increment_login_attempts()
-user_2.increment_login_attempts()
-print(user_2.login_attempt)
+# # 9-6 Ice Cream Stand
+# my_ice_cream = IceCreamStand("冰淇淋展台", 89)
+# my_ice_cream.display_flavors()
 
-user_2.reset_login_attempts()
-print(user_2.login_attempt)
+# 9-7 Admin
+my_admin = Admin('Donald', 'Trump', 75, 'Mar-a-Lago')
+my_admin.privileges.show_privileges()
