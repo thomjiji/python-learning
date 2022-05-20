@@ -1,4 +1,8 @@
-# Reference: https://ehmatthes.github.io/pcc_2e/solutions/chapter_9/#9-15-lottery-analysis
+"""
+Reference:
+1. https://ehmatthes.github.io/pcc_2e/solutions/chapter_9/#9-15-lottery-analysis
+2. https://www.omnicalculator.com/statistics/lottery
+"""
 
 import random
 
@@ -9,7 +13,7 @@ winning_ticket = []
 
 print("let's see what the winning ticket is...")
 
-for i in range(100):
+for i in range(4):
     selected = random.choice(possibilities)
     winning_ticket.append(selected)
     print(f"We pulled a {selected}!")

@@ -1,24 +1,47 @@
-import random
+from random import choice
 
-lottery = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-           'a', 'b', 'c', 'd', 'e']
-my_ticket = ['3', '2', 'e', 'b', '3']
 
-# Make an empty list for looping.
-wins_num_list = []
+def make_random_ticket(possibilities):
+    random_ticket = []
+    while len(random_ticket) < 4:
+        pulled_item = choice(possibilities)
+        if pulled_item not in random_ticket:
+            random_ticket.append(pulled_item)
+    return random_ticket
 
-# main loop for filling that empty list "wins_num_list"
-flag = 0
-while flag < 100:
-    runs_num = 0
-    while runs_num < 5:
-        wins_num_list.append(random.choice(lottery))
-        runs_num += 1
 
-    if wins_num_list == my_ticket:
-        print("You win!")
-        flag = 100
-    else:
-        flag += 1
-        wins_num_list = []
-        continue
+def check_winning(my_ticket, winning_ticket):
+    """
+    Check whether every item in my_ticket is in winning_ticket.
+    Return False even if only one item is not in winning_ticket.
+    """
+    for item in my_ticket:
+        if item not in winning_ticket:
+            return False
+
+    return True
+
+
+possibilities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'a', 'b', 'c', 'd', 'e']
+
+winning_ticket = make_random_ticket(possibilities)
+
+tries = 0
+won = False
+
+while not won:
+    my_ticket = make_random_ticket(possibilities)
+    won = check_winning(my_ticket, winning_ticket)
+    tries += 1
+    if tries >= 10_000:
+        break
+
+if won:
+    print("We have a winning ticket!")
+    print(f"Your ticket: {my_ticket}")
+    print(f"Winning ticket: {winning_ticket}")
+    print(f"It only took {tries} tries to win!")
+else:
+    print(f"Tried {tries} times, without pulling a winner. :(")
+    print(f"Your ticket: {my_ticket}")
+    print(f"Winning ticket: {winning_ticket}")
