@@ -1,13 +1,18 @@
+# Reference: https://ehmatthes.github.io/pcc_2e/solutions/chapter_9/#9-15-lottery-analysis
+
 import random
 
-lottery = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-           'a', 'b', 'c', 'd', 'e']
+possibilities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                 'a', 'b', 'c', 'd', 'e']
 
-lucky_num_list = []
-i = 0
-while i < 5:
-    lucky_num_list.append(random.choice(lottery))
-    i += 1
+winning_ticket = []
 
-lucky_num = ', '.join(lucky_num_list)
-print(f"Anyone who has {lucky_num} wins the price!")
+print("let's see what the winning ticket is...")
+
+for i in range(100):
+    selected = random.choice(possibilities)
+    winning_ticket.append(selected)
+    print(f"We pulled a {selected}!")
+
+winning_ticket_str = ' '.join(winning_ticket)
+print(f"The final winning ticket is: {winning_ticket_str}.")
