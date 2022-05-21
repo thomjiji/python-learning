@@ -1,0 +1,37 @@
+#+title: Fd Command
+
+fd defaultly search recursively.
+
+* Find file with specific type
+
+~fd -e png~
+
+* Find a single file
+
+Just ~fd <file name>~
+
+* Find a file in a specific directory ~fd <file name> path/~ ~path/~ is relative path, you can also type absolute path when you need it.
+* Find File by type options
+
+Use =-t= option to let =fd= to look for directories, files, and symbolic link.
+
+=f=: File
+=d=: Directory
+=I=: Symbolic link
+=x=: Executable file
+=e=: Empty file
+
+~fd -td images~
+
+* Find file and then execute some other commands
+
+~fd -e zip -x unzip {}~: This will unzip the file in the current working directory.
+
+If we want it to be unzipped in the direcotry containing the zip file, we can use one of the following placeholders:
+
+- {}: The full file path and name of the found file.
+- {/}: The file name of the found file.
+- {//}: The directory containing the found file.
+- {/.}: The file name of the found file, without the extension.
+
+The zip file is then located and the unzipped in its parent directory.
