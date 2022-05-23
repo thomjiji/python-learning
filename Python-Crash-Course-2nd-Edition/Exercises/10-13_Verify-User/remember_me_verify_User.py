@@ -1,7 +1,7 @@
 import json
 
-"""Load the username, if it has been stored previously. Otherwise,
-prompt for the username and store it.
+"""
+Load the username, if it has been stored previously. Otherwise, prompt for the username and store it.
 """
 
 filename = 'username.json'
@@ -30,7 +30,8 @@ def get_new_username():
 def greet_user():
     """Greet the user by name."""
     username = get_stored_username()  # Call another function inside a function
-    if username:
+    verify = input(f"Are you {username}? (y/n)")
+    if verify in 'yes':
         print(f"Welcome back, {username}!")
     else:
         username = get_new_username()
