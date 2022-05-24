@@ -1,15 +1,9 @@
-fx6 = {'uhd_xavc-i_422_10_50': 500,
-       'uhd_xavc-i_422_10_25': 250,
-       'hd_xavc-i_422_10_50': 222,
-       'hd_xavc-i_422_10_25': 112}
+import json
 
-
-def get_bitrate():
-    index = f"uhd_xavc-i_422_10_50"
-    bitrate = fx6[index]
-    return bitrate
-
-
-cam_list = [fx6]
-
-print(get_bitrate())
+# try:
+with open('test.json', 'r') as f:
+    x = json.load(f)
+# except FileNotFoundError:
+#     username = 'x'
+#     with open('test.json', 'w') as f:
+#         json.dump(username, f)
